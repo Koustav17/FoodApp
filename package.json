@@ -1,0 +1,24 @@
+{
+  "name": "foodappnode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Koustav17/FoodApp.git"
+  },
+  "author": "Koustav Singha Roy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Koustav17/FoodApp/issues"
+  },
+  "homepage": "https://github.com/Koustav17/FoodApp#readme",
+  "dependencies": {
+    "express": "^4.21.1",
+    "mongoose": "^8.8.3"
+  }
+}

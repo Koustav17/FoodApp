@@ -1,4 +1,5 @@
-const connectURL = 'mongodb+srv://koustav:Koustav.cloud8334@cluster0.kw7ir.mongodb.net/FoodApp';
+require("dotenv").config();
+const connectURL = `${process.env.connecDBURL}`;
 const mongoose = require('mongoose');
 
 mongoose.connect(connectURL)

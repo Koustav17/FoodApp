@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { Schema, Types } = mongoose;
 
 const FoodSchema = new mongoose.Schema({
     OrderId: {
@@ -19,4 +20,12 @@ const FoodSchema = new mongoose.Schema({
     }
 });
 
+// const FileUpload = new mongoose.Schema({
+//     file: {
+//         type: Types.ObjectId,
+//         ref: 'FoodApp'
+//     }
+// })
+
 module.exports = mongoose.model("FoodApp", FoodSchema);
+// module.exports = mongoose.model("FileApp", FileUpload);

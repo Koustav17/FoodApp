@@ -14,6 +14,9 @@ const FoodSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    File: {
+        type: String
+    },
     Date: {
         type: Date,
         default: Date.now

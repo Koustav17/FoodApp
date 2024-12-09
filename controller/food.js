@@ -3,6 +3,7 @@ var foodRouter = express.Router();
 const FoodSchema = require('../model/foodSchema');
 const multer =  require('multer');
 const cors = require('cors');
+var filePath = '';
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -10,7 +11,7 @@ const storage = multer.diskStorage({
     },
     filename: function(req, file, cb) {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-        cb(null, uniqueSuffix+file.originalname)
+        cb(null, uniqueSuffix +  file.originalname)
     }
 });
 
@@ -23,6 +24,7 @@ foodRouter.post('/file-upload', upload.single('file'), async(req, res) => {
         res.status(400).json({message: 'PLease attach the File And Try'});
     }
     try {
+        filePath = req.file.path;
         res.status(200).json({message: 'File Upload Successfully'})
     } catch (err) {
         res.status(500).json({ error: err.message })
@@ -35,7 +37,8 @@ foodRouter.post('/createOrder',  upload.single('file'), async (req, res) => {
     let payload = {
         OrderId: FinalString,
         OrderName: req.body.OrderName,
-        FoodName: req.body.FoodName
+        FoodName: req.body.FoodName,
+        File: filePath
     }
     if(req.body.OrderName.length < 3) {
         return res.status(400).json({message: 'OrderName Should Not be Less than 3'});
@@ -75,7 +78,8 @@ foodRouter.post('/deleteOrder/:id', async (req, res) => {
 foodRouter.post('/updateOrder/:id', async (req, res) => {
     let payload = {
         OrderName: req.body.OrderName,
-        FoodName: req.body.FoodName
+        FoodName: req.body.FoodName,
+        File: filePath
     }
     if(req.body.OrderName.length < 3) {
         return res.status(400).json({message: 'OrderName Should Not be Less than 3'});
